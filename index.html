@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pokémon Search App</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <main>
+    <h1>Pokémon Search App</h1>
+
+    <div class="app">
+      <header>
+        <label for="search-input">Search for Pokémon Name or ID</label>
+        <div class="input">
+          <input id="search-input" type="text" required>
+          <button
+          id="search-button"
+          type="button">Search</button>
+        </div>
+      </header>
+
+      <div id="pokemon">
+        <div class="pokemon-basic">
+          <p>
+            <span id="pokemon-name"></span>
+            <span id="pokemon-id"></span>
+          </p>
+          <p class="weight-height">
+            <span id="weight"></span>
+            <span id="height"></span>
+          </p>
+          <div class="img">
+            <img id="sprite" src="" alt="">
+          </div>
+
+          <div id="types" class="types"></div>
+
+          <table>
+            <thead>
+              <th scope="col">Base</th>
+              <th scope="col">Stats</th>
+            </thead>
+
+            <tbody>
+              <tr>
+                <th
+                scope="row"
+                >HP:</th>
+                <td id="hp"></td>
+              </tr>
+              <tr>
+                <th
+                scope="row"
+                >Attack:</th>
+                <td id="attack">55</td>
+              </tr><tr>
+                <th
+                scope="row"
+                >Defense:</th>
+                <td id="defense">40</td>
+              </tr>
+              <tr>
+                <th
+                scope="row"
+                >Sp. Attack:</th>
+                <td id="special-attack">50</td>
+              </tr>
+              <tr>
+                <th
+                scope="row"
+                >Sp. Defense:</th>
+                <td id="special-defense">50</td>
+              </tr>
+              <tr>
+                <th
+                scope="row"
+                >Speed:</th>
+                <td id="speed">90</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
