@@ -14,36 +14,18 @@ const specialAttack = document.getElementById('special-attack')
 const specialDefense = document.getElementById('special-defense')
 const speed = document.getElementById('speed')
 
-const pokemonApi = `https://pokeapi-proxy.freecodecamp.rocks/api/pokemon`
-
 const searchForPokemon = () => {
   if (searchInput.value === '') {
-    alert('Preencha esse campo')
+    return alert('Preencha esse campo')
   }
-
-  pokemonTypes.innerHTML = ''
   
   const searchNameOrId = searchInput.value.toLowerCase()
-
   fetchData(searchNameOrId)
 }
 
 const fetchData = async (nameOrId) => {
   try {
-    // const data = await (await fetch(pokemonApi)).json()
-    // console.log(data)
-    // const pokemonObj = data.results.filter((obj) => {
-    //   if (obj.id == nameOrId || obj.name === nameOrId) {
-    //     return obj
-    //   }
-    // })[nameOrId - 1]
-
-    // const dataPokemon = await (await fetch(pokemonObj.url)).json()
-    // console.log(dataPokemon)
-
     const data = await (await fetch(`https://pokeapi-proxy.freecodecamp.rocks/api/pokemon/${nameOrId}/`)).json()
-    console.log(data)
-
     showPokemon(data)
 
   } catch (err) {
@@ -53,28 +35,26 @@ const fetchData = async (nameOrId) => {
 }
 
 const showPokemon = (obj) => {
-  const {name, id, height, weight, types, stats} = obj
-  console.log(weight)
+  pokemonTypes.innerHTML = ''
+
+  const {name, id, height, weight, sprites, types, stats} = obj
 
   const typesArr = []
   types.forEach(el => {
     typesArr.push(el.type.name)
   })
 
-  console.log(typesArr)
-
   const statsArr = []
   stats.forEach(el => {
     statsArr.push(el.base_stat)
   })
-  console.log(statsArr)
 
   pokemon.style.display = 'block'
   pokemonName.textContent = name.toUpperCase()
   pokemonId.textContent = `#${id}`
   pokemonWeight.innerText = `Weight: ${weight}`
   pokemonHeight.textContent = `Height: ${height}`
-  pokemonImg.src = obj.sprites.front_default
+  pokemonImg.src = sprites.front_default
 
   typesArr.forEach(type => pokemonTypes.innerHTML += `<span>${type}</span>`)
 
@@ -86,4 +66,9 @@ const showPokemon = (obj) => {
   speed.textContent  = statsArr[5]
 }
 
+window.addEventListener('keydown', (event) => {
+  if (event.key === 'Enter') {
+    searchForPokemon()
+  }
+})
 searchBtn.addEventListener('click', searchForPokemon)

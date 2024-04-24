@@ -62,7 +62,7 @@ h1 {
   font-size: 12px;
 }
 
-.pokemon .img {
+.img {
   display: flex;
   place-content: center;
 }
@@ -81,6 +81,10 @@ h1 {
   text-transform: uppercase;
   font-size: 12px;
   margin-right: 5px;
+}
+
+.types span + span {
+  background-color: #c28cf5;
 }
 
 table {
